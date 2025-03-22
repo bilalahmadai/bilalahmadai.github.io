@@ -130,8 +130,12 @@ header p {
     font-weight: 400;
 }
 header p span {
-    color: #6a1b9a;
+    background: linear-gradient(135deg, #f8f4f8, #6a1b9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     transition: color 0.5s ease;
+    background-clip: text; /* Added for better compatibility */
+    color: transparent; /* Added for better compatibility */
 }
 header p.dark-mode span {
     color: #e91e63;
@@ -530,7 +534,7 @@ body.dark-mode .work-experience-content h2 {
         background-position: -200% 50%;
     }
     100% {
-        background-position: 200% 50%;
+        background-position: 300% 50%;  /* Increased to 300% to ensure complete pass-through */
     }
 }
 
@@ -551,15 +555,15 @@ h1.animated-name {
     background: linear-gradient(
         110deg,
         var(--gradient-start) 0%,
-        var(--gradient-end) 40%,
+        var(--gradient-end) 35%,
         #ffffff 50%,
-        var(--gradient-end) 60%,
+        var(--gradient-end) 65%,
         var(--gradient-start) 100%
     );
-    background-size: 200% 100%;  /* Changed from 500% to 200% */
+    background-size: 300% 100%;  /* Changed to 300% to match keyframe */
     -webkit-background-clip: text;
     background-clip: text;
-    animation: shine 8s ease-out forwards;  /* Reduced time and changed timing function */
+    animation: shine 8s ease-out forwards;
 }
 
 h1.animated-name span {
@@ -578,7 +582,7 @@ h1.animated-name span {
         gap: 0;
         text-align: left;
         align-items: flex-start;
-        animation: shine 8s ease-out forwards;  /* Same as desktop */
+        animation: shine 8s ease-out forwards;
     }
 }
 
