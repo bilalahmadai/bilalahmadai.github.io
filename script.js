@@ -16,75 +16,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const githubButton = document.querySelector('.nav-buttons .github-button');
     const resumeButton = document.getElementById('resume-button');
 
-
     function enableDarkMode() {
-        const body = document.body;
         body.classList.add('dark-mode');
-        
-        // Update all h2 elements
-        document.querySelectorAll('h2').forEach(heading => {
-            heading.classList.add('dark-mode');
-        });
-        
-        sections.forEach(section => section.classList.add('dark-mode'));
-        socialLinks.forEach(link => link.classList.add('dark-mode'));
-        techGridDivs.forEach(div => div.classList.add('dark-mode'));
-        experienceListDivs.forEach(div => div.classList.add('dark-mode'));
-        sectionTitles.forEach(title => title.classList.add('dark-mode'));
-        darkModeToggle.classList.add('dark-mode');
-        navBar.classList.add('dark-mode');
-        navButtons.forEach(button => button.classList.add('dark-mode'));
+        updateElementsForDarkMode(true);
         localStorage.setItem('darkMode', 'enabled');
     }
 
-    function disableDarkMode(){
-        const body = document.body;
+    function disableDarkMode() {
         body.classList.remove('dark-mode');
-        
-        // Update all h2 elements
-        document.querySelectorAll('h2').forEach(heading => {
-            heading.classList.remove('dark-mode');
-        });
-        
-        sections.forEach(section => section.classList.remove('dark-mode'));
-        socialLinks.forEach(link => link.classList.remove('dark-mode'));
-        techGridDivs.forEach(div => div.classList.remove('dark-mode'));
-        experienceListDivs.forEach(div => div.classList.remove('dark-mode'));
-        sectionTitles.forEach(title => title.classList.remove('dark-mode'));
-        darkModeToggle.classList.remove('dark-mode');
-        navBar.classList.remove('dark-mode');
-        navButtons.forEach(button => button.classList.remove('dark-mode'));
-        localStorage.setItem('darkMode', null);
+        updateElementsForDarkMode(false);
+        localStorage.setItem('darkMode', 'disabled');
     }
 
-    //check for saved preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
+    function updateElementsForDarkMode(isDarkMode) {
+        const action = isDarkMode ? 'add' : 'remove';
+        document.querySelectorAll('h2').forEach(heading => heading.classList[action]('dark-mode'));
+        sections.forEach(section => section.classList[action]('dark-mode'));
+        socialLinks.forEach(link => link.classList[action]('dark-mode'));
+        techGridDivs.forEach(div => div.classList[action]('dark-mode'));
+        experienceListDivs.forEach(div => div.classList[action]('dark-mode'));
+        sectionTitles.forEach(title => title.classList[action]('dark-mode'));
+        darkModeToggle.classList[action]('dark-mode');
+        navBar.classList[action]('dark-mode');
+        navButtons.forEach(button => button.classList[action]('dark-mode'));
+    }
+
+    // Check for saved preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === 'enabled') {
         enableDarkMode();
-    }
-    //detect system preference
-    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            enableDarkMode();
-    }
-    else{
+    } else if (savedDarkMode === 'disabled') {
+        disableDarkMode();
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        enableDarkMode();
+    } else {
         disableDarkMode();
     }
 
-
     function toggleDarkMode() {
-        try {
-            if (body.classList.contains('dark-mode')) {
-                disableDarkMode();
-            } else {
-                enableDarkMode();
-            }
-        } catch (error) {
-            console.error('Error toggling dark mode:', error);
+        if (body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
         }
     }
 
     darkModeToggle.addEventListener('click', toggleDarkMode);
-
-
 
     // Manually set the text for the icons.
     const linkLabels = {
@@ -99,11 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (labelText) {
             icon.textContent = labelText;
-            // icon.classList.add('material-icons');  // Removed this line
         }
     });
 
-    // Add icons to the  buttons
+    // Add icons to the buttons
     navButtons.forEach(button => {
         const buttonText = button.textContent.trim();
         let iconElement = button.querySelector('i');
@@ -118,15 +94,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //Style profile buttons.
+    // Style profile buttons.
     if (linkedinButton) {
         linkedinButton.classList.add('linkedin-button');
     }
     if (githubButton) {
         githubButton.classList.add('github-button');
     }
-    if (resumeButton){
-        resumeButton.classList.add('resume-button')
+    if (resumeButton) {
+        resumeButton.classList.add('resume-button');
     }
 
     // Add click handlers for navigation buttons
