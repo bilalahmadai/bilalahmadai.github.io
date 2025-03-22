@@ -178,6 +178,9 @@ section > div.dark-mode {
     margin-bottom: 0;
 }
 /* --- About Section --- */
+.about-content{
+    padding-top: 40px;
+}
 .about-content h2{
     display: flex;
     flex-direction: column;
@@ -187,7 +190,7 @@ section > div.dark-mode {
     width: 100px;
     height: 3px;
     background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-    margin-top: 10px;
+    margin-top: 5px;
     display: block; /* Ensure it behaves like a block element */
 }
 .about-content h2.dark-mode::after {
@@ -230,7 +233,10 @@ section > div.dark-mode {
     backdrop-filter: blur(10px);
     justify-self: center; /* Center cards in their grid cells */
 }
-
+.flexible-boxes .box:hover {
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
 .flexible-boxes .box i {
     font-size: 2.5em;
     color: var(--text-color);
@@ -281,6 +287,7 @@ body.dark-mode .flexible-boxes .box h3 {
     color: transparent;  /* Makes the text color transparent to show the gradient */
 }
 /* --- Tech Stack Section --- */
+
 .tech-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -289,6 +296,8 @@ body.dark-mode .flexible-boxes .box h3 {
 .tech-grid div {
     padding: 20px 15px;
     border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5); /* Adjusted for a more pronounced blur effect */
+    backdrop-filter: blur(15px); /* Increased blur effect for a stronger background blur */
 }
 .tech-grid h3 {
     font-size: 1.7em;
@@ -722,3 +731,119 @@ h1.animated-name span {
     }
 }
 
+/* Base styles for tech stack section */
+.tech-stack-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 0;
+    margin: 80px 0; /* Add consistent margin top and bottom */
+}
+
+.tech-stack-content > div {
+    /* width: 100%; */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 25px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .tech-stack-content {
+        min-height: auto;
+        /* padding: 20px 0; */
+        margin: 80px 0; /* Adjusted margin for mobile */
+    }
+
+    /* Space between sections */
+    #about + .tech-stack-content {
+        margin-top: 100px; /* Extra space after about section */
+    }
+
+    .tech-stack-content + .work-experience-content {
+        margin-top: 100px; /* Extra space before work experience section */
+    }
+
+    .tech-stack-content > div {
+        padding: 25px 15px;
+        /* margin: 0 15px; */
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .tech-stack-content {
+        margin: 60px 0; /* Slightly reduced margin for very small devices */
+    }
+
+    #about + .tech-stack-content {
+        margin-top: 80px; /* Adjusted for very small devices */
+    }
+
+    .tech-stack-content + .work-experience-content {
+        margin-top: 80px; /* Adjusted for very small devices */
+    }
+}
+
+.tech-stack-content .section-title {
+   padding-bottom: 30px;
+}
+.tech-stack-content h2 {
+    /* Light mode: black text */
+    color: var(--heading-primary-dark) !important; /* Ensuring text is black */
+
+}
+
+.tech-stack-content h3 {
+    /* Light mode: black text */
+    color: black; /* Ensuring text is black */
+}
+
+.tech-stack-content p {
+    /* Light mode: black text */
+    color: black; /* Ensuring text is black */
+}
+
+/* Dark mode overrides for tech stack */
+body.dark-mode .tech-stack-content > div {
+    /* Dark mode: light background */
+    background-color: var(--section-bg);
+}
+
+
+
+body.dark-mode .tech-stack-content h3 {
+    /* Dark mode: black text */
+    color: black; /* Ensuring text is black */
+}
+
+body.dark-mode .tech-stack-content p {
+    /* Dark mode: black text */
+    color: black; /* Ensuring text is black */
+}
+.tech-stack-content ul {
+    /* Style for the unordered list */
+    list-style-type: disc; /* Changed to display bullet points */
+    padding-left: 20px; /* Added padding for bullet alignment */
+    margin: 0;
+    display: flex; /* Use flexbox to display items in a row */
+    flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+}
+
+.tech-stack-content ul li {
+    /* Light mode: black text */
+    color: black; /* Ensuring text is black */
+    font-size: 1.15em;
+    line-height: 1.8;
+    margin: 0 30px 10px 0; /* Increased margin for more spacing between items and rows */
+}
+
+body.dark-mode .tech-stack-content ul li {
+    /* Dark mode: black text */
+    color: black; /* Ensuring text is black */
+}

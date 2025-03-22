@@ -129,6 +129,25 @@ document.addEventListener('DOMContentLoaded', function() {
         resumeButton.classList.add('resume-button')
     }
 
+    // Add click handlers for navigation buttons
+    if (resumeButton) {
+        resumeButton.addEventListener('click', function() {
+            window.open('#under-review', '_blank');
+        });
+    }
+
+    if (linkedinButton) {
+        linkedinButton.addEventListener('click', function() {
+            window.open('https://linkedin.com/in/bilalahmadai', '_blank');
+        });
+    }
+
+    if (githubButton) {
+        githubButton.addEventListener('click', function() {
+            window.open('https://github.com/bilalahmadai', '_blank');
+        });
+    }
+
     // Remove loading state
     document.body.classList.remove('loading');
 });
