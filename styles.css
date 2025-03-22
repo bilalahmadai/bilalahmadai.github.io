@@ -524,7 +524,7 @@ body.dark-mode .work-experience-content h2 {
     color: var(--heading-primary-dark) !important;
 }
 
-/* Reset and update the shine keyframe */
+/* Simplified shine keyframe */
 @keyframes shine {
     0% {
         background-position: -200% 50%;
@@ -550,16 +550,16 @@ h1.animated-name {
     color: transparent;
     background: linear-gradient(
         110deg,
-        var(--gradient-start) 20%,
+        var(--gradient-start) 0%,
         var(--gradient-end) 40%,
         #ffffff 50%,
         var(--gradient-end) 60%,
-        var(--gradient-start) 80%
+        var(--gradient-start) 100%
     );
-    background-size: 200% 100%;
+    background-size: 200% 100%;  /* Changed from 500% to 200% */
     -webkit-background-clip: text;
     background-clip: text;
-    animation: shine 8s forwards cubic-bezier(0.4, 0, 0.2, 1);
+    animation: shine 8s ease-out forwards;  /* Reduced time and changed timing function */
 }
 
 h1.animated-name span {
@@ -578,18 +578,7 @@ h1.animated-name span {
         gap: 0;
         text-align: left;
         align-items: flex-start;
-        /* Keep the same gradient and single animation */
-        animation: shine 8s forwards cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    h1.animated-name span {
-        display: block;
-        text-align: left;
-        line-height: 0.9;
-        background: inherit;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        animation: shine 8s ease-out forwards;  /* Same as desktop */
     }
 }
 
