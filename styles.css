@@ -1,0 +1,33 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #222;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?technology,ai') no-repeat center center/cover;
+}
+
+.hero h1, .hero p {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #222;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
