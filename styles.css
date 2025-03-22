@@ -24,6 +24,8 @@
     --heading-primary-dark: #f5f5f5;
     --heading-secondary-dark: #e0e0e0;
     --heading-tertiary-dark: #bdbdbd;
+
+
 }
 
 /* --- General Styles --- */
@@ -198,6 +200,85 @@ section > div.dark-mode {
 }
 .about-content p.dark-mode {
     color: #d0d0d0;
+}
+
+.flexible-boxes {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: calc(100% - 40px); /* Account for container padding */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+.flexible-boxes .box {
+    position: relative;
+    width: 100%;
+    min-width: 180px;
+    max-width: 280px; /* Prevent cards from getting too wide */
+    height: 200px;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
+    border: 1px solid rgb(250, 250, 250);
+    box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    justify-self: center; /* Center cards in their grid cells */
+}
+
+.flexible-boxes .box i {
+    font-size: 2.5em;
+    color: var(--text-color);
+}
+
+.flexible-boxes .box h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: rgb(249, 249, 249);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.1em;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Dark mode styles */
+body.dark-mode .flexible-boxes .box {
+    background: linear-gradient(rgba(0, 0, 0, 0.05), transparent);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+body.dark-mode .flexible-boxes .box i {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .flexible-boxes .box h3 {
+    background: rgb(0, 0, 0);
+    color: var(--dark-text-color);
+}
+
+.highlight {
+    background: linear-gradient(130deg, var(--text-color), var(--primary-color));  /* Gradient with 130 deg rotation */
+    font-weight: 500;
+    transition: background 0.3s ease;  /* Changed to background for gradient transition */
+    -webkit-background-clip: text;  /* Ensures the gradient is applied to the text */
+    color: transparent;  /* Makes the text color transparent to show the gradient */
+}
+
+/* Dark mode version */
+.dark-mode .highlight {
+    background: linear-gradient(130deg, var(--dark-text-color), var(--primary-color));  /* Gradient for dark mode */
+    -webkit-background-clip: text;  /* Ensures the gradient is applied to the text */
+    color: transparent;  /* Makes the text color transparent to show the gradient */
 }
 /* --- Tech Stack Section --- */
 .tech-grid {
@@ -590,6 +671,54 @@ h1.animated-name span {
 @media (max-width: 480px) {
     h1.animated-name {
         font-size: 5em;
+    }
+}
+
+/* Responsive breakpoints */
+@media screen and (min-width: 1400px) {
+    .flexible-boxes {
+        grid-template-columns: repeat(4, minmax(180px, 280px));
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .flexible-boxes {
+        grid-template-columns: repeat(3, minmax(180px, 280px));
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .flexible-boxes {
+        grid-template-columns: repeat(2, minmax(180px, 280px));
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .flexible-boxes {
+        grid-template-columns: minmax(180px, 280px);
+        gap: 20px;
+        width: calc(100% - 20px); /* Smaller padding on mobile */
+        padding: 10px;
+    }
+
+    .flexible-boxes .box {
+        height: 180px;
+    }
+}
+
+/* Adjust container padding for different screen sizes */
+@media screen and (max-width: 768px) {
+    .flexible-boxes {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .flexible-boxes {
+        padding: 10px;
     }
 }
 
