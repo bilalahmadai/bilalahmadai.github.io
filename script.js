@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click handlers for navigation buttons
     if (resumeButton) {
         resumeButton.addEventListener('click', function() {
-            window.open('#under-review', '_blank');
+            window.open('/', '_blank');
         });
     }
 

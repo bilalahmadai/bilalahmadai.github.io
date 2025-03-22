@@ -1,144 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for proper character encoding and responsive viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bilal Ahmad - AI Engineer specializing in LLM, Generative AI, and AI Applications">
+    
     <title>Bilal Ahmad - AI Engineer</title>
+    
+    <!-- External font and icon resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom styles and scripts -->
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Main container -->
     <div class="container">
+        <!-- Navigation bar -->
         <nav class="nav-bar" role="navigation" aria-label="Main navigation">
             <ul class="nav-buttons">
                 <li>
-                    <button class="nav-button" id="resume-button" onclick="window.open('path/to/your/resume.pdf', '_blank')">
-                        <i class="fas fa-file-alt"></i>
+                    <button class="nav-button" id="resume-button" aria-label="View Resume" onclick="window.open('/', '_blank')">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>
                         <span>Resume</span>
                     </button>
                 </li>
                 <li>
-                    <button class="nav-button" id="linkedin-button" onclick="window.open('https://linkedin.com/in/bilalahmadai', '_blank')">
-                        <i class="fab fa-linkedin"></i>
+                    <button class="nav-button" id="linkedin-button" aria-label="Visit LinkedIn Profile" onclick="window.open('https://linkedin.com/in/bilalahmadai', '_blank')">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </button>
                 </li>
                 <li>
-                    <button class="nav-button" id="github-button" onclick="window.open('https://github.com/bilalahmadai', '_blank')">
-                        <i class="fab fa-github"></i>
+                    <button class="nav-button" id="github-button" aria-label="Visit GitHub Profile" onclick="window.open('https://github.com/bilalahmadai', '_blank')">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                         <span>GitHub</span>
                     </button>
                 </li>
             </ul>
         </nav>
-        <div class="dark-mode-toggle" role="button" aria-label="Toggle dark mode">
+
+        <!-- Dark mode toggle -->
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
             <span class="dark-mode-text">Dark Mode</span>
-            <i class="material-icons">brightness_6</i>
-        </div>
+            <i class="material-icons" aria-hidden="true">brightness_6</i>
+        </button>
+
+        <!-- Header section -->
         <header>
             <h1 class="animated-name">
                 <span>Bilal</span>
                 <span>Ahmad</span>
             </h1>
-            <p>
-                AI Engineer <span>|</span> LLM & Generative AI Specialist <span>|</span> AI Application Developer
+            <p class="title-description">
+                AI Engineer <span aria-hidden="true">|</span> LLM & Generative AI Specialist <span aria-hidden="true">|</span> AI Application Developer
             </p>
         </header>
+
+        <!-- About section -->
         <section id="about" class="about-content">
-            <div >
-                <h2 class="section-title">About Me</h2>
-                <p>I specialize in building AI-driven solutions that transform unstructured data into actionable insights.<span class="highlight"> My expertise spans NLP, Computer Vision, RAG systems, and AI-powered automation, ensuring that models deliver high accuracy and seamless integration in production environments.</span></p>
-                <div class="flexible-boxes">
-                    <div class="box">
-                        <i class="material-icons">computer</i>
-                        <h3>AI Solutions</h3>
-                    </div>
-                    <div class="box">
-                        <i class="material-icons">data_usage</i>
-                        <h3>Data Insights</h3>
-                    </div>
-                    <div class="box">
-                        <i class="material-icons">cloud</i>
-                        <h3>Cloud Integration</h3>
-                    </div>
-                    <div class="box">
-                        <i class="material-icons">cloud</i>
-                        <h3>Cloud Integration</h3>
-                    </div>
-                    
+            <h2 class="section-title">About Me</h2>
+            <p>I specialize in building AI-driven solutions that transform unstructured data into actionable insights.<span class="highlight"> My expertise spans NLP, Computer Vision, RAG systems, and AI-powered automation, ensuring that models deliver high accuracy and seamless integration in production environments.</span></p>
+            
+            <!-- Expertise boxes -->
+            <div class="flexible-boxes">
+                <div class="box" role="presentation">
+                    <i class="material-icons" aria-hidden="true">computer</i>
+                    <h3>AI Solutions</h3>
                 </div>
-            
+                <div class="box" role="presentation">
+                    <i class="material-icons" aria-hidden="true">data_usage</i>
+                    <h3>Generative AI</h3>
+                </div>
+                <div class="box" role="presentation">
+                    <i class="material-icons" aria-hidden="true">cloud</i>
+                    <h3>Cloud Integration</h3>
+                </div>
+                <div class="box" role="presentation">
+                    <i class="material-icons" aria-hidden="true">group</i>
+                    <h3>Team Management</h3>
+                </div>
+                
             </div>
-            
-            
         </section>
+
+        <!-- Tech Stack section -->
         <section id="tech-stack" class="tech-stack-content">
-            <div>
-                <h2 class="section-title">Tech Stack</h2>
-                <div class="tech-grid">
-                    <div>
-                        <h3>Machine Learning & AI</h3>
-                        <ul>
-                            <li>Python</li>
-                            <li>PyTorch</li>
-                            <li>TensorFlow</li>
-                            <li>Hugging Face</li>
-                            <li>LangChain</li>
-                            <li>LlamaIndex</li>
-                            <li>CrewAI</li>
-                            <li>OpenAI APIs</li>
-                            <li>Transformers</li>
-                            <li>LLMs</li>
-                            <li>RAG-based applications</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Backend & Deployment</h3>
-                        <ul>
-                            <li>FastAPI</li>
-                            <li>Flask</li>
-                            <li>Docker</li>
-                            <li>PostgreSQL</li>
-                            <li>RESTful APIs</li>
-                            <li>GraphQL APIs</li>
-                            <li>Cloud</li>
-                            <li>MLOps</li>
-                        </ul>
-                    </div>
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="tech-grid">
+                <!-- ML & AI Technologies -->
+                <div>
+                    <h3>Machine Learning & AI</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>TensorFlow</li>
+                        <li>Hugging Face</li>
+                        <li>LangChain</li>
+                        <li>LlamaIndex</li>
+                        <li>CrewAI</li>
+                        <li>OpenAI APIs</li>
+                        <li>Transformers</li>
+                        <li>LLMs</li>
+                        <li>RAG-based applications</li>
+                    </ul>
+                </div>
+                <!-- Backend Technologies -->
+                <div>
+                    <h3>Backend & Deployment</h3>
+                    <ul>
+                        <li>FastAPI</li>
+                        <li>Flask</li>
+                        <li>Docker</li>
+                        <li>PostgreSQL</li>
+                        <li>RESTful APIs</li>
+                        <li>GraphQL APIs</li>
+                        <li>Cloud</li>
+                        <li>MLOps</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        
+        <!-- Work Experience section -->
         <section class="work-experience-content">
-            <div>
-                <h2 class="section-title">🏆 Work Experience</h2>
-                <div class="experience-list">
-                    <div>
-                        <h3>AI Application Developer</h3>
-                        <p>Developed and deployed various AI applications, showcasing expertise in machine learning, deep learning, and natural language processing.</p>
-                    </div>
-                    <div>
-                        <h3>AI-Driven Lead Generation Platform</h3>
-                        <p>Built an AI-powered platform analyzing Glassdoor, LinkedIn, Reddit, and Google News using web scraping, RAG, CrewAI agents, and sentiment analysis.</p>
-                    </div>
-                    <div>
-                        <h3>Chat-Based Document Retrieval System</h3>
-                        <p>Developed a chatbot using LangChain, LlamaIndex, OpenAI, Pinecone to extract insights from unstructured data.</p>
-                    </div>
-                    <div>
-                        <h3>AI-Powered Image Processing APIs</h3>
-                        <p>Created APIs for image captioning, metadata tagging, and road defect detection using OpenAI BLIP, Mask R-CNN, and Pinecone.</p>
-                    </div>
-                </div>
+            <h2 class="section-title">Work Experience</h2>
+            <div class="experience-list">
+                <article>
+                    <h3>AI Application Developer</h3>
+                    <p>Developed and deployed various AI applications, showcasing expertise in machine learning, deep learning, and natural language processing.</p>
+                </article>
+                
+                <article>
+                    <h3>AI-Driven Lead Generation Platform</h3>
+                    <p>Built an AI-powered platform analyzing Glassdoor, LinkedIn, Reddit, and Google News using web scraping, RAG, CrewAI agents, and sentiment analysis.</p>
+                </article>
+                <article>
+                    <h3>Chat-Based Document Retrieval System</h3>
+                    <p>Developed a chatbot using LangChain, LlamaIndex, OpenAI, Pinecone to extract insights from unstructured data.</p>
+                </article>
+                <article>
+                    <h3>AI-Powered Image Processing APIs</h3>
+                    <p>Created APIs for image captioning, metadata tagging, and road defect detection using OpenAI BLIP, Mask R-CNN, and Pinecone.</p>
+                </article>
             </div>
         </section>
-        
-        
     </div>
-    
 </body>
 </html>

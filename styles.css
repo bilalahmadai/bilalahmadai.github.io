@@ -792,7 +792,21 @@ h1.animated-name span {
 
 .tech-stack-content .section-title {
    padding-bottom: 30px;
+   display: flex;
+   flex-direction: column; /* Stack title and after element vertically */
 }
+
+.tech-stack-content .section-title:after {
+    content: '';
+    display: block;
+    align-self: center;
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
 .tech-stack-content h2 {
     /* Light mode: black text */
     color: var(--heading-primary-dark) !important; /* Ensuring text is black */
