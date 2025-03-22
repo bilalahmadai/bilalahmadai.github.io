@@ -34,12 +34,11 @@
             background: linear-gradient(to right, #6a1b9a, #e91e63);
             -webkit-background-clip: text;
             color: transparent;
-            animation: type 2.5s steps(20, end);
             overflow: hidden;
             white-space: nowrap;
             display: inline-block;
             font-family: 'Montserrat', sans-serif;
-            line-height: 1; /* Set line-height to 1 */
+            line-height: 1;
         }
         @keyframes type {
             from { width: 0; }
@@ -235,6 +234,36 @@
             p {
                 font-size: 1.1em;
             }
+            header {
+                align-items: flex-start;
+                text-align: left;
+            }
+            header h1 {
+                font-size: 6em;
+                display: block;
+                white-space: normal;
+                line-height: 1.1;
+            }
+            header h1 span{
+                display: block;
+                text-align: left;
+            }
+            header p{
+                font-size: 1.4em;
+            }
+            section {
+                padding: 30px 15px;
+            }
+            .about-content p{
+                font-size: 1.1em;
+                line-height: 1.7;
+            }
+            .tech-grid p{
+                font-size: 1em;
+            }
+            .experience-list p{
+                font-size: 1em;
+            }
         }
         /* --- Dark Mode Toggle --- */
         .dark-mode-toggle {
@@ -243,39 +272,42 @@
             right: 30px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             cursor: pointer;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 8px 16px;
+            border-radius: 20px;
             background-color: #e0e0e0;
             color: #424242;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
         }
         .dark-mode-toggle:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
         }
         .dark-mode-toggle.dark-mode {
             background-color: #424242;
             color: #e0e0e0;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         .dark-mode-toggle.dark-mode:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35);
         }
         .dark-mode-toggle span {
-            font-size: 1.2em;
+            font-size: 0.9em;
         }
         .material-icons {
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1 class="animated-name">Bilal Ahmad</h1>
+            <h1 class="animated-name">
+                <span>Bilal</span>
+                <span>Ahmad</span>
+            </h1>
             <p>🚀 AI Engineer | LLM & Generative AI Specialist</p>
         </header>
         <section class="about-content">
@@ -396,6 +428,8 @@
                     icon.classList.add('material-icons');
                 }
             });
+
+
         });
     </script>
 </body>
