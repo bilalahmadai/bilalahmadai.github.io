@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for proper character encoding and responsive viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bilal Ahmad - AI Engineer specializing in LLM, Generative AI, and AI Applications">
     
     <title>Bilal Ahmad - AI Engineer</title>
     
-    <!-- External font and icon resources -->
+    <!-- Preload fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon libraries -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
@@ -19,26 +20,36 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Main container -->
+<body class="loading">
     <div class="container">
-        <!-- Navigation bar -->
+        <!-- Navigation -->
         <nav class="nav-bar" role="navigation" aria-label="Main navigation">
             <ul class="nav-buttons">
+                <li class="separator-li">
+
+                    <div class="nav-button" id="profile-button" aria-label="View Profile">
+                        <!-- <i class="fas fa-user" aria-hidden="true"></i>
+                        <span>Profile</span> -->
+                        <img src="profile.jpg" alt="Bilal Ahmad / bilalahmadai Profile" class="profile-image">
+                        <span class="profile-span" >Profile</span>
+                    </div>
+                    <span class="separator"></span>
+                </li>
+                
                 <li>
-                    <button class="nav-button" id="resume-button" aria-label="View Resume" onclick="window.open('/', '_blank')">
+                    <button class="nav-button" id="resume-button" aria-label="View Resume">
                         <i class="fas fa-file-alt" aria-hidden="true"></i>
                         <span>Resume</span>
                     </button>
                 </li>
                 <li>
-                    <button class="nav-button" id="linkedin-button" aria-label="Visit LinkedIn Profile" onclick="window.open('https://linkedin.com/in/bilalahmadai', '_blank')">
+                    <button class="nav-button" id="linkedin-button" aria-label="Visit LinkedIn Profile">
                         <i class="fab fa-linkedin" aria-hidden="true"></i>
                         <span>LinkedIn</span>
                     </button>
                 </li>
                 <li>
-                    <button class="nav-button" id="github-button" aria-label="Visit GitHub Profile" onclick="window.open('https://github.com/bilalahmadai', '_blank')">
+                    <button class="nav-button" id="github-button" aria-label="Visit GitHub Profile">
                         <i class="fab fa-github" aria-hidden="true"></i>
                         <span>GitHub</span>
                     </button>
@@ -49,8 +60,59 @@
         <!-- Dark mode toggle -->
         <button class="dark-mode-toggle" aria-label="Toggle dark mode">
             <span class="dark-mode-text">Dark Mode</span>
+            <span class="light-mode-text" style="display: none;">Light Mode</span>
             <i class="material-icons" aria-hidden="true">brightness_6</i>
         </button>
+
+        <section id="profile-section" class="profile-section">
+            <span class="close-button" aria-label="Close Profile">
+                <i class="material-icons" aria-hidden="true">close</i>
+            </span>
+
+            <div class="profile-container">
+                <img src="profile.jpg" alt="Bilal Ahmad / bilalahmadai Profile" class="profile-image">
+                <div class="profile-content">
+                    <h2 class="section-title">Bilal Ahmad</h2>
+                    <div class="social-box">
+                        <a href="https://www.linkedin.com/in/bilalahmadai" target="_blank">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.github.com/bilalahmadai" target="_blank">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.twitter.com/bilalahmadai" target="_blank">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:bilalahmadai@gmail.com" target="_blank">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/933276485788" target="_blank">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <hr class="profile-hr">
+            <div class="profile-description">
+                <div class="profile-desc-line">
+                    <i class="material-icons" aria-hidden="true">location_on</i>
+                    <p><span>From • </span> Gujranwala, Pakistan</p>
+                </div>
+                <div class="profile-desc-line">
+                    <i class="material-icons" aria-hidden="true">school</i>
+                    <p><span>Education • </span> Bachelors in Computer Science</p>
+                </div>
+                <div class="profile-desc-line">
+                    <i class="material-icons" aria-hidden="true">school</i>
+                    <p><span>Study at</span> University of Punjab, Gujranwala Campus <i>(2019-2023)</i></p>
+                </div>                
+            </div>
+            <div class="copyright-container">
+                <p class="copyright">Copyright © 2025 Bilal Ahmad</p>
+            </div>
+            
+        </section>
 
         <!-- Header section -->
         <header>
@@ -86,7 +148,6 @@
                     <i class="material-icons" aria-hidden="true">group</i>
                     <h3>Team Management</h3>
                 </div>
-                
             </div>
         </section>
 
@@ -129,7 +190,7 @@
         </section>
 
         <!-- Work Experience section -->
-        <section class="work-experience-content">
+        <section id="experience" class="work-experience-content">
             <h2 class="section-title">Work Experience</h2>
             <div class="experience-list">
                 <article>

@@ -1,31 +1,43 @@
 :root {
-    /* Color Palette */
+    /* Color Palette - consolidated for better maintainability */
     --primary-color: #9c27b0;
     --secondary-color: #e91e63;
     --gradient-start: #6a1b9a;
     --gradient-end: #e91e63;
     
-    /* Light Mode Colors */
-    --bg-color: #f9f0ff;
-    --text-color: #212121;
-    --section-bg: #f8f0fb;
+    /* Theme Colors with Light/Dark variants */
+    --bg-color-light: #f9f0ff;
+    --bg-color-dark: #121212;
+    --text-color-light: #212121;
+    --text-color-dark: #f5f5f5;
+    --section-bg-light: #f8f0fb;
+    --section-bg-dark: #1e1e1e;
     
-    /* Dark Mode Colors */
-    --dark-bg-color: #121212;
-    --dark-text-color: #f5f5f5;
-    --dark-section-bg: #1e1e1e;
-
-    /* Heading Colors - Light Mode */
-    --heading-primary: #1e1e1e;
-    --heading-secondary: #424242;
-    --heading-tertiary: #616161;
-    
-    /* Heading Colors - Dark Mode */
+    /* Heading Colors */
+    --heading-primary-light: #1e1e1e;
+    --heading-secondary-light: #424242;
+    --heading-tertiary-light: #616161;
     --heading-primary-dark: #f5f5f5;
     --heading-secondary-dark: #e0e0e0;
     --heading-tertiary-dark: #bdbdbd;
+    
+    /* Dynamic theme variables - will be used throughout the CSS */
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --section-bg: var(--section-bg-light);
+    --heading-primary: var(--heading-primary-light);
+    --heading-secondary: var(--heading-secondary-light);
+    --heading-tertiary: var(--heading-tertiary-light);
+}
 
-
+/* Dark Mode Variables */
+.dark-mode {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --section-bg: var(--section-bg-dark);
+    --heading-primary: var(--heading-primary-dark);
+    --heading-secondary: var(--heading-secondary-dark);
+    --heading-tertiary: var(--heading-tertiary-dark);
 }
 
 /* --- General Styles --- */
@@ -37,65 +49,49 @@ body {
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-body.dark-mode {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-text-color);
-}
+
 .container {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
 }
+
+/* Typography */
+h1, h2, h3, p {
+    margin: 0 0 20px;
+    color: var(--heading-primary);
+    transition: color 0.3s ease;
+}
+
 h1 {
     font-size: 9em;
-    margin-bottom: 20px;
     text-align: center;
     font-weight: 700;
     letter-spacing: -0.05em;
-    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-    -webkit-background-clip: text;
-    color: transparent;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
     font-family: 'Montserrat', sans-serif;
     line-height: 1;
 }
-@keyframes type {
-    from { width: 0; }
-    to { width: 100%; }
-}
+
 h2 {
     font-size: 2.5em;
-    margin-bottom: 20px;
-    color: var(--heading-primary);
-    letter-spacing: -0.02em;
     font-weight: 500;
-    transition: color 0.3s ease;
+    letter-spacing: -0.02em;
 }
-body.dark-mode h2 {
-    color: var(--heading-primary-dark) !important;
-}
+
 h3 {
     font-size: 1.7em;
-    margin-bottom: 15px;
-    color: var(--heading-secondary);
     font-weight: 500;
-    transition: color 0.3s ease;
+    color: var(--heading-secondary);
 }
-h3.dark-mode {
-    color: var(--heading-secondary-dark);
-}
+
 p {
     font-size: 1.15em;
     line-height: 1.8;
-    color: #424242;
+    color: var(--text-color);
 }
-p.dark-mode {
-    color: #d0d0d0;
-}
+
 a {
-    color: #9c27b0;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -103,16 +99,12 @@ a {
     align-items: center;
     gap: 10px;
 }
+
 a:hover {
-    color: #7b1fa2;
+    color: var(--gradient-start);
 }
-a.dark-mode {
-    color: #e91e63;
-}
-a.dark-mode:hover {
-    color: #c2185b;
-}
-/* --- Header Section --- */
+
+/* Header Styles */
 header {
     display: flex;
     flex-direction: column;
@@ -120,524 +112,10 @@ header {
     align-items: center;
     min-height: 80vh;
     text-align: center;
-    margin-bottom: 0;
-}
-header h1 {
-    margin-bottom: 20px;
-}
-header p {
-    font-size: 1.5em;
-    color: #616161;
-    margin-bottom: 0;
-    font-weight: 400;
-}
-header p span {
-    background: linear-gradient(135deg, #969696, #6a1b9a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: color 0.5s ease;
-    background-clip: text; /* Added for better compatibility */
-    color: transparent; /* Added for better compatibility */
-}
-
-header p.dark-mode span {
-    color: #e91e63;
-}
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-.profile-image.dark-mode {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-/* --- Section Styles --- */
-section {
     margin-bottom: 60px;
 }
-section > div {
-    padding: 40px 25px;
-    border-radius: 15px;
-    background-color: var(--section-bg);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-section > div.dark-mode {
-    background-color: var(--dark-section-bg);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
-.section-title {
-    display: flex;
-    align-items: self-start;
-    gap: 15px;
-    margin-bottom: 35px;
-}
-.section-title h2 {
-    margin-bottom: 0;
-}
-/* --- About Section --- */
-.about-content{
-    padding-top: 40px;
-}
-.about-content h2{
-    display: flex;
-    flex-direction: column;
-}
-.about-content h2::after {
-    content: '';
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-    margin-top: 5px;
-    display: block; /* Ensure it behaves like a block element */
-}
-.about-content h2.dark-mode::after {
-    background: linear-gradient(to right, var(--gradient-end), var(--gradient-start));
-}
-.about-content p {
-    font-size: 1.2em;
-    line-height: 1.9;
-    color: #5e5e5e;
-}
-.about-content p.dark-mode {
-    color: #d0d0d0;
-}
 
-.flexible-boxes {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    width: calc(100% - 40px); /* Account for container padding */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    justify-content: center;
-}
-
-.flexible-boxes .box {
-    position: relative;
-    width: 100%;
-    min-width: 180px;
-    max-width: 280px; /* Prevent cards from getting too wide */
-    height: 200px;
-    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
-    border: 1px solid rgb(250, 250, 250);
-    box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    justify-self: center; /* Center cards in their grid cells */
-}
-.flexible-boxes .box:hover {
-    transform: translateY(-5px);
-    transition: 0.5s;
-}
-.flexible-boxes .box i {
-    font-size: 2.5em;
-    color: var(--text-color);
-}
-
-.flexible-boxes .box h3 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    background: rgb(249, 249, 249);
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-color);
-    font-size: 1.1em;
-    border-radius: 0 0 10px 10px;
-}
-
-/* Dark mode styles */
-body.dark-mode .flexible-boxes .box {
-    background: linear-gradient(rgba(0, 0, 0, 0.05), transparent);
-    border: 1px solid rgb(0, 0, 0);
-}
-
-body.dark-mode .flexible-boxes .box i {
-    color: var(--dark-text-color);
-}
-
-body.dark-mode .flexible-boxes .box h3 {
-    background: rgb(0, 0, 0);
-    color: var(--dark-text-color);
-}
-
-.highlight {
-    background: linear-gradient(130deg, var(--text-color), var(--primary-color));  /* Gradient with 130 deg rotation */
-    font-weight: 500;
-    transition: background 0.3s ease;  /* Changed to background for gradient transition */
-    -webkit-background-clip: text;  /* Ensures the gradient is applied to the text */
-    color: transparent;  /* Makes the text color transparent to show the gradient */
-}
-
-/* Dark mode version */
-.dark-mode .highlight {
-    background: linear-gradient(130deg, var(--dark-text-color), var(--primary-color));  /* Gradient for dark mode */
-    -webkit-background-clip: text;  /* Ensures the gradient is applied to the text */
-    color: transparent;  /* Makes the text color transparent to show the gradient */
-}
-/* --- Tech Stack Section --- */
-
-.tech-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-.tech-grid div {
-    padding: 20px 15px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.5); /* Adjusted for a more pronounced blur effect */
-    backdrop-filter: blur(15px); /* Increased blur effect for a stronger background blur */
-}
-.tech-grid h3 {
-    font-size: 1.7em;
-    margin-bottom: 15px;
-    color: var(--heading-secondary);
-    font-weight: 500;
-}
-.tech-grid h3.dark-mode {
-    color: var(--heading-secondary-dark);
-}
-.tech-grid p {
-    font-size: 1.15em;
-    line-height: 1.8;
-    color: #5e5e5e;
-}
-.tech-grid p.dark-mode {
-    color: #d0d0d0;
-}
-/* --- Work Experience Section --- */
-.experience-list div {
-    margin-bottom: 30px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #f0f0f0;
-}
-.experience-list div.dark-mode {
-    border-bottom: 1px solid #4a4a4a;
-}
-.experience-list div:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-.experience-list h3 {
-    font-size: 1.7em;
-    margin-bottom: 15px;
-    color: #9c27b0;
-    font-weight: 500;
-}
-.experience-list h3.dark-mode {
-    color: #e91e63;
-}
-.experience-list p {
-    font-size: 1.15em;
-    line-height: 1.8;
-    color: #5e5e5e;
-}
-.experience-list p.dark-mode {
-    color: #d0d0d0;
-}
-/* --- Connect With Me Section --- */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-}
-.social-links a {
-    font-size: 1.6em;
-}
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 7em;
-    }
-    h2 {
-        font-size: 2em;
-    }
-    .tech-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .social-links {
-        gap: 30px;
-    }
-    header p {
-        font-size: 1.2em;
-    }
-    p {
-        font-size: 1.1em;
-    }
-    header {
-        align-items: flex-start;
-        text-align: left;
-    }
-    header h1 {
-        font-size: 6em;
-        display: block;
-        white-space: normal;
-        line-height: 1.1;
-    }
-    header h1 span{
-        display: block;
-        text-align: left;
-    }
-    header p{
-        font-size: 1.4em;
-    }
-    section > div {
-        padding: 30px 20px;
-    }
-    .about-content p{
-        font-size: 1.1em;
-        line-height: 1.7;
-    }
-    .tech-grid p{
-        font-size: 1em;
-    }
-    .experience-list p{
-        font-size: 1em;
-    }
-    .tech-grid div {
-        padding: 15px 10px;
-    }
-}
-/* --- Dark Mode Toggle --- */
-.dark-mode-toggle {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 20px;
-    background-color: #e0e0e0;
-    color: #424242;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-}
-.dark-mode-toggle:hover {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
-}
-.dark-mode-toggle.dark-mode {
-    background-color: #424242;
-    color: #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-.dark-mode-toggle.dark-mode:hover {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35);
-}
-.dark-mode-toggle span {
-    font-size: 0.9em;
-}
-.material-icons {
-    font-size: 1.2em;
-}
-
-/* --- Navigation Bar Styles --- */
-.nav-bar {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(240, 240, 240, 0.7);
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(240,240,240,0.3);
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-buttons li {
-    margin: 0;
-}
-
-/* Common button styles */
-.nav-button {
-    background-color: transparent;
-    border: none;
-    color: #424242;
-    font-size: 1.1em;
-    cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.nav-button i {
-    font-size: 1.2em;
-}
-
-.nav-button span {
-    font-size: 0.95em;
-}
-
-/* Hover state */
-.nav-button:hover {
-    background-color: #e0e0e0;
-    color: #212121;
-}
-
-/* Dark mode styles */
-.nav-bar.dark-mode {
-    background-color: rgba(42, 42, 42, 0.7);
-    border: 1px solid rgba(42,42,42,0.3);
-}
-
-.nav-button.dark-mode {
-    color: #e0e0e0;
-}
-
-.nav-button.dark-mode:hover {
-    background-color: #4a4a4a;
-    color: #f5f5f5;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .nav-bar {
-        bottom: 0;
-        width: 95%;
-        left: 0;
-        transform: none;
-        border-radius: 0;
-        padding: 10px;
-        background-color: rgba(240, 240, 240, 0.95);
-        border: none;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-buttons {
-        width: 100%;
-        justify-content: space-around;
-        gap: 5px;
-    }
-
-    .nav-button {
-        flex-direction: column;
-        padding: 8px 12px;
-        gap: 4px;
-    }
-
-    .nav-button i {
-        font-size: 1.4em;
-        margin-bottom: 2px;
-    }
-
-    .nav-button span {
-        font-size: 0.8em;
-    }
-
-    /* Container adjustment for fixed navbar */
-    .container {
-        margin-bottom: 80px;
-    }
-}
-
-/* Style for the Profile buttons */
-.nav-buttons .linkedin-button {
-    /* Style for LinkedIn button */
-        display: flex; /* Enable flexbox for icon alignment */
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.nav-buttons .github-button {
-    /* Style for GitHub button */
-    display: flex; /* Enable flexbox for icon alignment */
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.nav-buttons .linkedin-button i{
-    margin-right: 5px;
-}
-.nav-buttons .github-button i{
-    margin-right: 5px;
-}
-
-.loading {
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-}
-
-body:not(.loading) {
-    opacity: 1;
-}
-
-/* Section specific styles */
-.section-title h2,
-.about-content h2,
-.tech-stack-content h2,
-.work-experience-content h2 {
-    color: var(--heading-primary);
-}
-
-/* Dark mode for section specific h2 */
-body.dark-mode .section-title h2,
-body.dark-mode .about-content h2,
-body.dark-mode .tech-stack-content h2,
-body.dark-mode .work-experience-content h2 {
-    color: var(--heading-primary-dark) !important;
-}
-
-/* Simplified shine keyframe */
-@keyframes shine {
-    0% {
-        background-position: -200% 50%;
-    }
-    100% {
-        background-position: 300% 50%;  /* Increased to 300% to ensure complete pass-through */
-    }
-}
-
-/* Update the h1 styles */
-h1.animated-name {
-    font-size: 9em;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1;
+.animated-name {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -651,214 +129,544 @@ h1.animated-name {
         var(--gradient-end) 65%,
         var(--gradient-start) 100%
     );
-    background-size: 300% 100%;  /* Changed to 300% to match keyframe */
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     animation: shine 8s ease-out forwards;
 }
 
-h1.animated-name span {
+.animated-name span {
     display: inline-block;
-    background: inherit;
+}
+
+@keyframes shine {
+    0% { background-position: -200% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+.title-description {
+    font-size: 1.5em;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.title-description span {
+    background: linear-gradient(135deg, #969696, var(--gradient-start));
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-    h1.animated-name {
-        font-size: 6em;
-        flex-direction: column;
-        gap: 0;
-        text-align: left;
-        align-items: flex-start;
-        animation: shine 8s ease-out forwards;
-    }
+/* Section Styles */
+section {
+    margin-bottom: 60px;
 }
 
-/* Add smaller screen optimization */
-@media (max-width: 480px) {
-    h1.animated-name {
-        font-size: 5em;
-    }
+.section-title {
+    margin-bottom: 35px;
+    position: relative;
 }
 
-/* Responsive breakpoints */
-@media screen and (min-width: 1400px) {
-    .flexible-boxes {
-        grid-template-columns: repeat(4, minmax(180px, 280px));
-        gap: 40px;
-    }
+/* About Section */
+.about-content {
+    padding-top: 40px;
 }
 
-@media screen and (max-width: 1200px) {
-    .flexible-boxes {
-        grid-template-columns: repeat(3, minmax(180px, 280px));
-        gap: 30px;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .flexible-boxes {
-        grid-template-columns: repeat(2, minmax(180px, 280px));
-        gap: 25px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .flexible-boxes {
-        grid-template-columns: minmax(180px, 280px);
-        gap: 20px;
-        width: calc(100% - 20px); /* Smaller padding on mobile */
-        padding: 10px;
-    }
-
-    .flexible-boxes .box {
-        height: 180px;
-    }
-}
-
-/* Adjust container padding for different screen sizes */
-@media screen and (max-width: 768px) {
-    .flexible-boxes {
-        padding: 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .flexible-boxes {
-        padding: 10px;
-    }
-}
-
-/* Base styles for tech stack section */
-.tech-stack-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 40px 0;
-    margin: 80px 0; /* Add consistent margin top and bottom */
-}
-
-.tech-stack-content > div {
-    /* width: 100%; */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 25px;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .tech-stack-content {
-        min-height: auto;
-        /* padding: 20px 0; */
-        margin: 80px 0; /* Adjusted margin for mobile */
-    }
-
-    /* Space between sections */
-    #about + .tech-stack-content {
-        margin-top: 100px; /* Extra space after about section */
-    }
-
-    .tech-stack-content + .work-experience-content {
-        margin-top: 100px; /* Extra space before work experience section */
-    }
-
-    .tech-stack-content > div {
-        padding: 25px 15px;
-        /* margin: 0 15px; */
-    }
-}
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-    .tech-stack-content {
-        margin: 60px 0; /* Slightly reduced margin for very small devices */
-    }
-
-    #about + .tech-stack-content {
-        margin-top: 80px; /* Adjusted for very small devices */
-    }
-
-    .tech-stack-content + .work-experience-content {
-        margin-top: 80px; /* Adjusted for very small devices */
-    }
-}
-
-.tech-stack-content .section-title {
-   padding-bottom: 30px;
-   display: flex;
-   flex-direction: column; /* Stack title and after element vertically */
-}
-
-.tech-stack-content .section-title:after {
+.about-content h2::after {
     content: '';
     display: block;
-    align-self: center;
-    width: 80%;
-    height: 4px;
+    width: 100px;
+    height: 3px;
     background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-    border-radius: 2px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-.tech-stack-content h2 {
-    /* Light mode: black text */
-    color: var(--heading-primary-dark) !important; /* Ensuring text is black */
-
+.highlight {
+    background: linear-gradient(130deg, var(--text-color), var(--primary-color));
+    font-weight: 500;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-.tech-stack-content h3 {
-    /* Light mode: black text */
-    color: black; /* Ensuring text is black */
+/* Flexible Boxes */
+.flexible-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
 }
 
-.tech-stack-content p {
-    /* Light mode: black text */
-    color: black; /* Ensuring text is black */
+.box {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
+    border: 1px solid rgba(250, 250, 250, 0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
 }
 
-/* Dark mode overrides for tech stack */
-body.dark-mode .tech-stack-content > div {
-    /* Dark mode: light background */
-    background-color: var(--section-bg);
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
-
-
-body.dark-mode .tech-stack-content h3 {
-    /* Dark mode: black text */
-    color: black; /* Ensuring text is black */
+.box i {
+    font-size: 2.5em;
+    color: var(--text-color);
 }
 
-body.dark-mode .tech-stack-content p {
-    /* Dark mode: black text */
-    color: black; /* Ensuring text is black */
-}
-.tech-stack-content ul {
-    /* Style for the unordered list */
-    list-style-type: disc; /* Changed to display bullet points */
-    padding-left: 20px; /* Added padding for bullet alignment */
+.box h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(249, 249, 249, 0.9);
     margin: 0;
-    display: flex; /* Use flexbox to display items in a row */
-    flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+
+    font-size: 1.2em;
 }
 
-.tech-stack-content ul li {
-    /* Light mode: black text */
-    color: black; /* Ensuring text is black */
+.dark-mode .box {
+    background: linear-gradient(rgba(30, 30, 30, 0.05), transparent);
+    border: 1px solid rgba(50, 50, 50, 0.5);
+}
+
+.dark-mode .box h3 {
+    background: rgba(30, 30, 30, 0.9);
+}
+
+/* Tech Stack Section */
+.tech-stack-content {
+    margin: 80px 0;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tech-grid div {
+    padding: 20px;
+    border-radius: 12px;
+    /* background: rgba(255, 255, 255, 0.5); */
+    backdrop-filter: blur(15px);
+    background-image: linear-gradient(
+    20deg,
+    hsla(0, 0%, 100%, 0) 0%,
+    hsl(277, 95%, 60%) 40%,
+    hsl(277, 95%, 60%) 60%,
+    hsla(0, 0%, 40%, 0) 100%
+  );
+  border: 0.5px solid rgba(0, 0, 0, 0.50);
+}
+
+.dark-mode .tech-grid div {
+    border: 0.5px solid rgba(255, 255, 255, 0.50); /* Change border to black in dark mode */
+}
+
+.tech-grid ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tech-grid li {
+    margin: 0 30px 10px 0;
     font-size: 1.15em;
-    line-height: 1.8;
-    margin: 0 30px 10px 0; /* Increased margin for more spacing between items and rows */
+    line-height: 1.6;
+}
+.tech-grid li::marker {
+    font-size: 1.2em;
+    color: var(--text-color-light);
 }
 
-body.dark-mode .tech-stack-content ul li {
-    /* Dark mode: black text */
-    color: black; /* Ensuring text is black */
+/* Work Experience Section */
+.experience-list article {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+.dark-mode .experience-list article {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.experience-list article:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.experience-list h3 {
+    color: var(--primary-color);
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(224, 224, 224, 0.5); /* Adjusted for a more blurred effect */
+    color: #424242;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Added backdrop filter for blurring effect */
+}
+
+.dark-mode-toggle:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .dark-mode-toggle {
+    background-color: rgba(66, 66, 66, 0.8);
+    color: #e0e0e0;
+}
+
+
+
+/* Navigation Bar */
+.nav-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(240, 240, 240, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 240, 240, 0.3);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-button {
+    background-color: transparent;
+    border: none;
+    color: #424242;
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-button i {
+    font-size: 1.2em;
+}
+
+.nav-button:hover {
+    background-color: rgba(224, 224, 224, 0.7);
+}
+
+.dark-mode .nav-bar {
+    background-color: rgba(42, 42, 42, 0.7);
+    border: 1px solid rgba(42, 42, 42, 0.3);
+}
+
+.dark-mode .nav-button {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav-button:hover {
+    background-color: rgba(74, 74, 74, 0.7);
+}
+.separator-li {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.nav-button img {
+    width: 1.5rem; /* Adjust size as needed */
+    height: 1.5rem; /* Adjust size as needed */
+    border-radius: 50%; /* Make the image circular */
+}
+.profile-span{
+    display: none;
+}
+.separator {
+    display: inline-block; /* Ensure it behaves like an inline element */
+    width: 2px; /* Set the width of the separator */
+    height: 80%; /* Set the height of the separator */
+    background: rgba(255, 255, 255, 0.5); /* Gradient color */
+    margin: 0 10px; /* Add some space around the separator */
+}
+.profile-section {
+    width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed for blur effect */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-radius: 10px;
+    position: relative; /* Ensure the close button is positioned relative to this section */
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    /* display: none; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease; /* Add transition for opacity */
+}
+.profile-section.show {
+    opacity: 1; /* Fully visible when the class is added */
+}
+.dark-mode .profile-section{
+    background: rgba(30, 30, 30, 0.8); /* Adjust opacity as needed for blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.profile-container{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.profile-hr{
+    border: 1px solid rgba(74, 74, 74, 0.195);
+    margin: 20px 0;
+}
+.copyright-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.copyright-container p{
+    margin-bottom: 0;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--heading-secondary);
+}
+
+.dark-mode .profile-hr{
+    border: 1px solid rgba(255, 255, 255, 0.195);
+}
+.profile-desc-line{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+.profile-desc-line i{
+    color: var(--heading-secondary);
+}
+.profile-desc-line p{
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+
+.profile-section h2{
+    margin-bottom: 5px;
+}
+.profile-section img {
+    max-width: 150px;
+    height: auto;
+    margin: 10px auto;
+    border-radius: 50%;
+   
+}
+
+.profile-section .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure the close button is above other elements */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.profile-section .close-button:hover {
+    transform: scale(1.2); /* Scale up the button on hover */
+}
+
+.social-box{
+    display: flex;
+    gap: 10px;
+}
+.social-box a{
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    
+}
+.social-box a:hover{
+    transform: scale(1.1);
+    box-shadow: 0 3px 7px rgba(252, 252, 252, 0.15);
+
+}
+.social-box i{
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+.dark-mode .social-box a{
+    background: linear-gradient(rgba(30, 30, 30, 0.05), transparent);
+    border: 1px solid rgba(50, 50, 50, 0.5);
+}
+
+
+
+
+
+/* Loading state */
+.loading {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+body:not(.loading) {
+    opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin-bottom: 80px; /* Space for fixed navbar */
+    }
+    
+    h1 {
+        font-size: 6em;
+    }
+    
+    h2 {
+        font-size: 2em;
+    }
+    
+    .animated-name {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    header {
+        align-items: flex-start;
+        text-align: left;
+        min-height: 60vh;
+    }
+    
+    .title-description {
+        font-size: 1.2em;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .flexible-boxes {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .nav-bar {
+        bottom: 0;
+        width: 95%;
+        left: 0;
+        right: 0;
+        transform: none;
+        border-radius: 0;
+        padding: 10px;
+        background-color: rgba(240, 240, 240, 0.95);
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-buttons {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px;
+    }
+    
+    .nav-button {
+        flex-direction: column;
+        padding: 8px;
+        border-radius: 10px;
+    }
+    .separator{
+        display: none;
+    }
+    .profile-span{
+        display: inline-block;
+    }
+    .nav-button img{
+        width: 1.2rem; /* Adjust size as needed */
+        height: 1.2rem; /* Adjust size as needed */
+    }
+    
+
+    .dark-mode-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .dark-mode-toggle span{
+        display: none;
+    }
+
+
+    .profile-section{
+        width: 90%;
+        padding: 10px;
+    }
+    .profile-container{
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 5em;
+    }
+    
+    .box {
+        height: 180px;
+    }
+    
+    .flexible-boxes {
+        padding: 10px;
+    }
 }
