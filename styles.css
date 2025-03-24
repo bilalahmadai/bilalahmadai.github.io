@@ -430,13 +430,13 @@ section {
     border-radius: 10px;
     position: relative; /* Ensure the close button is positioned relative to this section */
     border: 1px solid rgba(0, 0, 0, 0.5);
-    display: none;
+    /* display: none; */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    opacity: 0; /*Start hidden*/
+    opacity: 1; /*Start hidden*/
     transition: opacity 0.5s ease; /* Add transition for opacity */
 }
 .profile-section.show {
