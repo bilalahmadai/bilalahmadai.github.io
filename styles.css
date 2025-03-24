@@ -418,29 +418,30 @@ section {
     display: inline-block; /* Ensure it behaves like an inline element */
     width: 2px; /* Set the width of the separator */
     height: 80%; /* Set the height of the separator */
-    background: rgba(255, 255, 255, 0.5); /* Gradient color */
+    background: var(--text-color); /* Gradient color */
     margin: 0 10px; /* Add some space around the separator */
+    opacity: 0.2;
 }
 .profile-section {
     width: 450px;
     margin: 0 auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed for blur effect */
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
-    position: relative; /* Ensure the close button is positioned relative to this section */
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    /* display: none; */
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0); /* Start scaled down */
     z-index: 1000;
-    opacity: 1; /*Start hidden*/
-    transition: opacity 0.5s ease; /* Add transition for opacity */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Add transition for opacity and transform */
+    display: none; /* Ensure it's not displayed initially */
 }
 .profile-section.show {
+    display: block; /* Show the section */
     opacity: 1; /* Fully visible when the class is added */
+    transform: translate(-50%, -50%) scale(1); /* Scale to normal size */
 }
 .dark-mode .profile-section{
     background: rgba(30, 30, 30, 0.8); /* Adjust opacity as needed for blur effect */

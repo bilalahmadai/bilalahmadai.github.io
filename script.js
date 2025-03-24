@@ -71,11 +71,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Close profile section
+    // Initialize profile section visibility based on user preference
+    function initProfileSection() {
+        const hasClosedProfile = localStorage.getItem('profileClosed');
+        if (!hasClosedProfile) {
+            openProfileSection(); // Show profile section on first visit
+        } else {
+            closeProfileSection(); // Ensure it's closed on subsequent visits
+        }
+    }
+
+    // Close profile section and set preference in localStorage
     function closeProfileSection() {
         profileSection.classList.remove('show'); // Remove the show class to trigger fade-out
         setTimeout(() => {
             profileSection.style.display = 'none'; // Hide the profile section after the animation
+            localStorage.setItem('profileClosed', 'true'); // Set preference to indicate it was closed
         }, 500); // Match this duration with the CSS transition duration
     }
 
@@ -119,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the page
     function init() {
         initDarkMode();
+        initProfileSection(); // Initialize profile section visibility
         initNavButtons();
         setupEventListeners();
         
