@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // URLs for navigation
     const urls = {
-        resume: 'https://docs.google.com/document/d/1-O6VCTF_uR9ymoQ52oE-HZ-IIZyJc1vmt6KOFIPRfdo/edit?usp=sharing',
+        resume: 'https://drive.google.com/file/d/1ggbrQq4bTnESB2rXUVr11pXVpTfO-OfY/view?usp=sharing',
         linkedin: 'https://linkedin.com/in/bilalahmadai',
         github: 'https://github.com/bilalahmadai'
     };
